@@ -1,0 +1,11 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+    <title>{{ post.title }}</title>
+    <h1>{{ post.title }}</h1>
+    <p>by {{ post.author }} on {{ post.publish|date:'F jS Y' }}</p>
+    <br>
+    <p>{{ post.body|safe }}</p>
+
+{% endblock %}

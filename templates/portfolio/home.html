@@ -1,14 +1,40 @@
-<title>Home</title>
-<h1>Home Page</h1>
+{% extends "portfolio/base.html" %}
 
-{% for project in projects %}
+{% load static %}
 
-    <h2>{{ project.title }}</h2>
-    <p>{{ project.description }}</p>
-    <img src="{{ project.image.url }}" heigh="100px" width="100px">
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/armor_1.png' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Blane Tschida is a dude and he does math.</h1>
+  </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
     {% if project.url %}
-        <br>
-        <a href="{{ project.url }}">link</a>
-    {% endif %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
 
-{% endfor %}
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
